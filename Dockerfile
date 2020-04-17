@@ -3,6 +3,13 @@ ARG BASE_IMAGE=ubi8
 ARG BASE_TAG=8.1
 FROM $BASE_REGISTRY/$BASE_IMAGE:$BASE_TAG
 
+LABEL name="PostgreSQL" \
+    description="PostgreSQL container based off UBI8" \
+    vendor="PostgreSQL" \
+    summary="PostgreSQL (Red Hat UBI)" \
+    maintainer="josheason@seed-innovations.com" \
+    version="9.16.17"
+
 ARG PGDATA=/var/lib/postgresql/data
 
 ENV PGDATA=${PGDATA}
@@ -12,7 +19,7 @@ ENV PATH $PATH:/usr/pgsql-96/bin \
 
 USER 0
 
-COPY RPM-GPG-KEY-PGDG-96 \
+COPY signatures/RPM-GPG-KEY-PGDG-96 \
     postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm \
     postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm \
     postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm \

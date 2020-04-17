@@ -1,3 +1,3 @@
 # Signatures
 
-None
+Contains the GPG key for installing PostgreSQL RPM's.
