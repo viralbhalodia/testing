@@ -1,2 +1,2 @@
 @Library('DCCSCR@master') _
-dccscrPipeline(version: "9.6")
+dccscrPipeline(version: "9.6.17")
