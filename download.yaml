@@ -1,0 +1,22 @@
+---
+resources:
+  - url: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-96
+    filename: RPM-GPG-KEY-PGDG-96
+    validation:
+      type: sha256
+      value: 5c7bdbdfa666de461e14007f7207d4d4f8c0565c56a88bb24c77f25b856203d4
+  - url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm
+    filename: postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm
+    validation:
+      type: sha256
+      value: 2a5aa6e29782eeef7d35e922d9ff11abf50a918cdd2cbb575e746e5170fd53c8
+  - url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm
+    filename: postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm
+    validation:
+      type: sha256
+      value: cd60f96d9df27c644ae3cf932950ea18590f6e51d8d813c6d902b91e1a908f92
+  - url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm
+    filename: postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm
+    validation:
+      type: sha256
+      value: 7afb58012ec1f5dcd2d807d8c4627fb944c822e7cbfe9adc83690ed12bec137a
