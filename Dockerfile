@@ -36,7 +36,7 @@ VOLUME /var/lib/postgresql/data
 USER postgres
 
 ENV PGDATA=${PGDATA}
-ENV PATH $PATH:/usr/pgsql-96/bin
+ENV PATH $PATH:/usr/pgsql-9.6/bin
 ENV LANG en_US.utf8
 
 HEALTHCHECK --interval=5s --timeout=3s CMD /usr/pgsql-96/bin/pg_isready -U postgres
