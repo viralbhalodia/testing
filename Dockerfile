@@ -12,11 +12,6 @@ LABEL name="PostgreSQL" \
 
 ARG PGDATA=/var/lib/postgresql/data
 
-ENV PGDATA=${PGDATA}
-
-ENV PATH $PATH:/usr/pgsql-96/bin \
-    LANG en_US.utf8
-
 USER 0
 
 COPY signatures/RPM-GPG-KEY-PGDG-96 \
@@ -39,6 +34,10 @@ RUN mkdir /docker-entrypoint-initdb.d && \
 VOLUME /var/lib/postgresql/data
 
 USER postgres
+
+ENV PGDATA=${PGDATA}
+ENV PATH $PATH:/usr/pgsql-96/bin
+ENV LANG en_US.utf8
 
 HEALTHCHECK --interval=5s --timeout=3s CMD /usr/pgsql-96/bin/pg_isready -U postgres
 
