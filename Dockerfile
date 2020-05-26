@@ -25,10 +25,13 @@ COPY signatures/RPM-GPG-KEY-PGDG-96 \
     postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm \
     /tmp/
 
+COPY scripts/docker-entrypoint.sh /usr/local/bin/
+
 RUN rpm --import /tmp/RPM-GPG-KEY-PGDG-96 && \
     dnf install -y /tmp/postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm && \
     dnf clean all && \
-    rm -rf /var/cache/dnf
+    rm -rf /var/cache/dnf && \
+    chmod +x /usr/local/bin/docker-entrypoint.sh
 
 RUN mkdir /docker-entrypoint-initdb.d && \
     mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PGDATA"
@@ -39,9 +42,7 @@ USER postgres
 
 HEALTHCHECK --interval=5s --timeout=3s CMD /usr/pgsql-96/bin/pg_isready -U postgres
 
-COPY scripts/docker-entrypoint.sh /usr/local/bin/
-
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 EXPOSE 5432
 
