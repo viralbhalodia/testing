@@ -23,7 +23,7 @@ COPY signatures/RPM-GPG-KEY-PGDG-96 \
 COPY scripts/docker-entrypoint.sh /usr/local/bin/
 
 RUN rpm --import /tmp/RPM-GPG-KEY-PGDG-96 && \
-    dnf install -y /tmp/postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm && \
+    dnf install -y glibc-langpack-en /tmp/postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm && \
     dnf clean all && \
     rm -rf /var/cache/dnf && \
     chmod +x /usr/local/bin/docker-entrypoint.sh
