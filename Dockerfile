@@ -8,22 +8,22 @@ LABEL name="PostgreSQL" \
     vendor="PostgreSQL" \
     summary="PostgreSQL (Red Hat UBI)" \
     maintainer="josheason@seed-innovations.com" \
-    version="9.16.17"
+    version="9.16.18"
 
 ARG PGDATA=/var/lib/postgresql/data
 
 USER 0
 
 COPY signatures/RPM-GPG-KEY-PGDG-96 \
-    postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm \
-    postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm \
-    postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm \
+    postgresql96-server.rpm \
+    postgresql96.rpm \
+    postgresql96-libs.rpm \
     /tmp/
 
 COPY scripts/docker-entrypoint.sh /usr/local/bin/
 
 RUN rpm --import /tmp/RPM-GPG-KEY-PGDG-96 && \
-    dnf install -y glibc-langpack-en /tmp/postgresql96-server-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-9.6.17-1PGDG.rhel8.x86_64.rpm /tmp/postgresql96-libs-9.6.17-1PGDG.rhel8.x86_64.rpm && \
+    dnf install -y glibc-langpack-en /tmp/postgresql96-server.rpm /tmp/postgresql96.rpm /tmp/postgresql96-libs.rpm && \
     dnf clean all && \
     rm -rf /var/cache/dnf && \
     chmod +x /usr/local/bin/docker-entrypoint.sh
