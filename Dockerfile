@@ -1,7 +1,4 @@
-ARG BASE_REGISTRY=registry.access.redhat.com
-ARG BASE_IMAGE=ubi8
-ARG BASE_TAG=8.2
-FROM $BASE_REGISTRY/$BASE_IMAGE:$BASE_TAG
+FROM registry.access.redhat.com/ubi8:8.2
 
 LABEL name="PostgreSQL" \
     description="PostgreSQL container based off UBI8" \
