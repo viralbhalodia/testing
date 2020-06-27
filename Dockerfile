@@ -12,9 +12,6 @@ ARG PGDATA=/var/lib/postgresql/data
 USER 0
 
 COPY signatures/RPM-GPG-KEY-PGDG-96 \
-    postgresql96-server.rpm \
-    postgresql96.rpm \
-    postgresql96-libs.rpm \
     /tmp/
 
 COPY scripts/docker-entrypoint.sh /usr/local/bin/
